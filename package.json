@@ -1,0 +1,30 @@
+{
+  "name": "fend-project-memory-game",
+  "version": "1.0.0",
+  "description": "Udacity Frontend Nanodegree Memory Game Project",
+  "main": "index.js",
+  "scripts": {
+    "clean": "rimraf dist",
+    "build": "npm run clean && webpack",
+    "serve": "webpack-dev-server --hot"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/carlhueffmeier/fend-project-memory-game.git"
+  },
+  "author": "Carl Hüffmeier",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/carlhueffmeier/fend-project-memory-game/issues"
+  },
+  "homepage": "https://github.com/carlhueffmeier/fend-project-memory-game#readme",
+  "devDependencies": {
+    "rimraf": "^2.6.2",
+    "webpack": "^3.6.0",
+    "webpack-dev-server": "^2.8.2"
+  },
+  "dependencies": {
+    "gsap": "^1.20.2",
+    "lodash": "^4.17.4"
+  }
+}
