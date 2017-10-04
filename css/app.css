@@ -66,8 +66,7 @@ h1 {
   transform: rotate3d(0, 1, 0, 180deg);
 }
 
-.deck .card.open,
-.deck .card.match {
+.deck .card.show {
   cursor: default;
   font-size: 33px;
 }

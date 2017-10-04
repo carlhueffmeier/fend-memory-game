@@ -38,7 +38,7 @@ class Score {
 
   // Returns html string with the right amount of stars
   stars() {
-    const star = '<li><i class="fa fa-star"></i></li>';
+    const star = `<li><i class="fa fa-star"></i></li>`;
     const rating = this.rating();
     return star.repeat(rating);
   }

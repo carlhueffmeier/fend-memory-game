@@ -3,6 +3,7 @@
 import { shuffle, flowRight as compose, curryRight, map } from 'lodash';
 import { getCards } from './CardTypes';
 import Card from './Card';
+import { MATCH } from './CardState';
 
 // Functional helper
 const curriedMap = curryRight(map);
@@ -28,6 +29,8 @@ class Deck {
       onNewMatch: this.checkGameOver.bind(this),
     };
     const makeCard = type => new Card({ type, ...cardProps });
+    // Receive an array of card types, duplicate and shuffle all items
+    // Finally return an array of card instances
     const makeShuffledDeck = compose([
       curriedMap(makeCard),
       shuffle,
@@ -70,13 +73,14 @@ class Deck {
   }
 
   setMatched(cards) {
-    // Synchronize animation
     const promises = cards.map(card => card.animationEnd());
+    // Wait until both cards have finished animation to keep animations in sync
     Promise.all(promises).then(() => cards.forEach(card => card.matched()));
   }
 
   closeCards(cards) {
     const promises = cards.map(card => card.animationEnd());
+    // Wait until both cards have finished animation to keep animations in sync
     Promise.all(promises).then(() => cards.forEach(card => card.close()));
   }
 
@@ -91,7 +95,7 @@ class Deck {
   checkGameOver() {
     if (
       !this.isGameOver &&
-      this.deck.every(card => card.getState() === 'MATCH')
+      this.deck.every(card => card.getState() === MATCH)
     ) {
       // Make sure we don't call gameOver() twice
       this.isGameOver = true;
