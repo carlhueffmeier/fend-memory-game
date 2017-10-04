@@ -15,3 +15,6 @@ See the [project rubric](https://review.udacity.com/#!/rubrics/591/view) for det
 8. Enter `npm start` to launch the server
 9. Browse to `localhost:8080` in your web browser
 10. Enjoy
+
+## How To Play
+This is a version of the classic memory game. Just pick a card to reveal it. The goal is to remember their location and find all matching cards. You can restart the game with the button on the top right.
