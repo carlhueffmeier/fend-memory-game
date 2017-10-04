@@ -9,6 +9,16 @@ const CardTypes = [
   'leaf',
   'bicycle',
   'bomb',
+  'space-shuttle',
+  'trophy',
+  'wrench',
+  'rocket',
+  'scissors',
+  'html5',
+  'rebel',
+  'bluetooth-b',
+  'linux',
+  'slack',
 ];
 
 // TODO: Add some more types
