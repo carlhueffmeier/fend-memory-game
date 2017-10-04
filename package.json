@@ -6,7 +6,7 @@
   "scripts": {
     "clean": "rimraf dist",
     "build": "npm run clean && webpack",
-    "serve": "webpack-dev-server --hot"
+    "start": "webpack-dev-server --hot"
   },
   "repository": {
     "type": "git",
@@ -17,7 +17,8 @@
   "bugs": {
     "url": "https://github.com/carlhueffmeier/fend-project-memory-game/issues"
   },
-  "homepage": "https://github.com/carlhueffmeier/fend-project-memory-game#readme",
+  "homepage":
+    "https://github.com/carlhueffmeier/fend-project-memory-game#readme",
   "devDependencies": {
     "babel-preset-stage-3": "^6.24.1",
     "rimraf": "^2.6.2",
