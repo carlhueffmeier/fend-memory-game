@@ -3,7 +3,7 @@
 import Deck from './Deck';
 import Score from './Score';
 
-// Global
+// DOM elements
 const restartNode = document.getElementsByClassName('restart')[0];
 
 //
@@ -12,20 +12,18 @@ const restartNode = document.getElementsByClassName('restart')[0];
 class Game {
   constructor() {
     restartNode.addEventListener('click', this.start.bind(this));
+    this.score = new Score();
   }
 
   gameOver() {
-    const notification = () =>
-      alert(
-        `Congratulations! You made ${this.score
-          .moves} moves. Your rating is ${'⭐️'.repeat(this.score.rating())}.`,
-      );
-    setTimeout(notification, 1000);
+    alert(
+      `Congratulations! You made ${this.score
+        .moves} moves. Your rating is ${'⭐️'.repeat(this.score.rating())}.`,
+    );
   }
 
   start() {
-    // TODO: Garbage collection, remove event listener
-    this.score = new Score();
+    this.score.reset();
     const incrementMoves = () => this.score.incrementMoves();
     const deckProps = {
       onMoveFinished: () => this.score.incrementMoves(),

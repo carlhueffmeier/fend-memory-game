@@ -5,7 +5,10 @@ import { TimelineLite } from 'gsap';
 //
 // Card
 //
-
+// Requires the following properties:
+// type: this corresponds to a font-awesome icon
+// onOpen: call when closed card gets clicked
+// onNewMatch: call when a card gets matched (to check game over condition)
 class Card {
   constructor({ type, onOpen, onNewMatch }) {
     this.type = type;
@@ -15,6 +18,7 @@ class Card {
     this.timeline = new TimelineLite();
   }
 
+  // Create DOM element
   create() {
     this.element = document.createElement('li');
     this.element.innerHTML = `<i class="fa fa-${this.type}"></i>`;
@@ -23,18 +27,16 @@ class Card {
     return this;
   }
 
+  // Append card to DOM element
   append(parent) {
     parent.appendChild(this.element);
     return this;
   }
 
-  setClass(...classList) {
-    this.element.className = `card ${classList.join(' ')}`;
-  }
-
+  // Reveal card and play animation
   open() {
     this.setState('OPEN');
-    this.setClass('open');
+    this.css('open');
     this.timeline.to(this.element, 1, {
       backgroundColor: '#02b3e4',
       rotationY: 0,
@@ -42,9 +44,10 @@ class Card {
     });
   }
 
+  // Make card matched and play animation
   matched() {
     this.setState('MATCH');
-    this.setClass('match');
+    this.css('match');
     this.timeline
       .to(this.element, 0.3, {
         backgroundColor: '#abfff7',
@@ -67,6 +70,7 @@ class Card {
       .call(this.onNewMatch);
   }
 
+  // Returns card to closed state
   close() {
     this.setState('CLOSED');
     this.timeline
@@ -75,9 +79,10 @@ class Card {
         backgroundColor: '#2e3d49',
         rotationY: 180,
       })
-      .call(() => this.setClass(''));
+      .call(() => this.css(''));
   }
 
+  // Returns promise that resolves once any running animation finishes
   animationEnd() {
     return new Promise(resolve =>
       this.timeline
@@ -89,21 +94,31 @@ class Card {
     );
   }
 
+  // Check whether 'card' is a match
   isMatch(card) {
     return card.type === this.type;
   }
 
+  // Returns current state: 'CLOSED', 'OPEN', 'MATCH'
   getState(state) {
     return this.state;
   }
 
-  // Private
+  //////////////////////
+  // Internal methods
+  //////////////////////
 
   setState(state) {
     this.state = state;
   }
 
+  // Sets CSS class of DOM element
+  css(...classList) {
+    this.element.className = `card ${classList.join(' ')}`;
+  }
+
   isClickable() {
+    // Only closed calls can be clicked
     return this.state === 'CLOSED';
   }
 
