@@ -1,5 +1,3 @@
-'use strict';
-
 import { shuffle, flowRight as compose, curryRight, map } from 'lodash';
 import { getCards } from './CardTypes';
 import Card from './Card';
@@ -11,7 +9,6 @@ const curriedMap = curryRight(map);
 // DOM elements
 const deckNode = document.getElementsByClassName('deck')[0];
 
-//
 // Deck
 //
 // Requires the following properties:

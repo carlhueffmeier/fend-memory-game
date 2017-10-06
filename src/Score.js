@@ -1,10 +1,7 @@
-'use strict';
-
 // DOM elements
 const movesNode = document.getElementsByClassName('moves')[0];
 const starsNode = document.getElementsByClassName('stars')[0];
 
-//
 // Score
 //
 // Keeps record of the number of moves and display
@@ -27,9 +24,9 @@ class Score {
 
   // Returns the rating as number
   rating() {
-    if (this.moves < 14) {
+    if (this.moves < 12) {
       return 3;
-    } else if (this.moves < 18) {
+    } else if (this.moves < 16) {
       return 2;
     } else {
       return 1;

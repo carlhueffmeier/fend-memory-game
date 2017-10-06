@@ -1,9 +1,6 @@
-'use strict';
-
 import { TimelineLite } from 'gsap';
 import { CLOSED, OPEN, MATCH } from './CardState';
 
-//
 // Card
 //
 // Requires the following properties:

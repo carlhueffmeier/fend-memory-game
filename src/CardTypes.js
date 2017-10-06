@@ -21,6 +21,4 @@ const CardTypes = [
   'slack',
 ];
 
-// TODO: Add some more types
-
 export const getCards = numberOfCards => sampleSize(CardTypes, numberOfCards);
