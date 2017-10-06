@@ -35,9 +35,8 @@ class Game {
   }
 
   start() {
-    if (this.timer.isRunning()) {
-      this.timer.reset();
-    } else {
+    this.timer.reset();
+    if (!this.timer.isRunning()) {
       this.timer.start();
     }
     this.score.reset();
